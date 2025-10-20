@@ -7,8 +7,8 @@ from .models import Estudiante
 
 
 def index(request):
+    """ """
     return render(request, "cursos/index.html")
-    pass
 
 
 def lista_estudiantes(request):

@@ -1,7 +1,34 @@
 {% extends "cursos/base.html" %} {% block content %}
-<div class="div">Hello aqui desde el index.html</div>
-<button>
-  <a href="">ingresar</a>
-</button>
-
+<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+  <h2 class="text-2xl font-semibold mb-4">Aprende idiomas con tutores de IA</h2>
+  <p class="mb-6">
+    En Proyecto3, ofrecemos una experiencia de aprendizaje de idiomas
+    personalizada y adaptada a tus necesidades y estilo de aprendizaje. Nuestros
+    tutores de IA están diseñados para ayudarte a alcanzar tus metas
+    lingüísticas de manera efectiva y divertida.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-gray-100 p-6 rounded-lg">
+      <h3 class="text-xl font-semibold mb-2">Clases Personalizadas</h3>
+      <p>
+        Nuestros tutores de IA se adaptan a tu nivel y estilo de aprendizaje,
+        proporcionando una experiencia educativa única y efectiva.
+      </p>
+    </div>
+    <div class="bg-gray-100 p-6 rounded-lg">
+      <h3 class="text-xl font-semibold mb-2">Variedad de Idiomas</h3>
+      <p>
+        Elige entre una amplia variedad de idiomas y comienza tu viaje de
+        aprendizaje hoy mismo.
+      </p>
+    </div>
+  </div>
+  <div class="mt-6 text-center">
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      <a href="#">Comenzar Ahora</a>
+    </button>
+  </div>
+</div>
 {% endblock content %}

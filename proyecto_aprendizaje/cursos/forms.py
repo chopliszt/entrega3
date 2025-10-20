@@ -1,12 +1,12 @@
 from django import forms
 
-from .models import Estudiante, Preferencia
+from .models import Curso, Estudiante, Plan, Preferencia
 
 
 class EstudianteForm(forms.ModelForm):
     class Meta:
         model = Estudiante
-        fields = "__all__"
+        fields = ["nombre", "email"]
         widgets = {
             "nombre": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Ingresa tu nombre"}
@@ -21,7 +21,20 @@ class PreferenciaForm(forms.ModelForm):
     class Meta:
         model = Preferencia
         fields = [
-            "curso",
-            "preferences_field1",
-            "preferences_field2",
-        ]  # Excluyendo el campo de estudiante
+            "preferencia_general",
+        ]  # Excluyendo los otros campos por buena práctica
+        widgets = {}
+
+
+class CursoForm(forms.ModelForm):
+    class Meta:
+        model: Curso
+        fields = ["nombre", "esta_activo"]
+        widgets = {}
+
+
+class PlanForm(forms.ModelForm):
+    class Meta:
+        model: Plan
+        fields = ["nombre", "precio", "se_renueva"]
+        widgets = {}

@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -8,7 +9,7 @@ from django.db import models
 # Necesito saber si está activo, porque el plan sería general
 class Curso(models.Model):
     nombre = models.CharField(max_length=150, null=False, blank=True, unique=True)
-    fecha_creado = models.DateTimeField(auto_now_add=True)
+    fecha_creado = models.DateTimeField(default=timezone.now)
     esta_activo = models.BooleanField(default=False)
     # Tags, agregar en el futuro
 
@@ -19,13 +20,13 @@ class Plan(models.Model):
     """
 
     nombre = models.CharField(max_length=150, null=False, blank=True, unique=True)
-    precio = models.IntegerField()
+    precio = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     se_renueva = models.BooleanField(default=False)
 
 
 class Estudiante(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    fecha_creado = models.DateTimeField(auto_now_add=True)
+    fecha_creado = models.DateTimeField(default=timezone.now)
     fecha_actualizado = models.DateTimeField(auto_now=True)
     nombre = models.CharField(max_length=150, null=False, blank=True)
     email = models.EmailField(
