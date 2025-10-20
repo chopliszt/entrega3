@@ -1,0 +1,11 @@
+{% extends "cursos/base.html" %} {% block content %}
+<form method="post" class="space-y-4">
+  {% csrf_token %} {{ form.as_p }}
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Submit
+  </button>
+</form>
+{% endblock content %}
