@@ -44,7 +44,7 @@ class Preferencia(models.Model):
 
     preferencia_general = models.TextField()
     estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
-    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f"Preferencias de {self.estudiante.nombre} para {self.curso.nombre}: {self.preferencia_general}"
+        return f"Preferencias de {self.estudiante.nombre} para curso: son preferencias: {self.preferencia_general}"

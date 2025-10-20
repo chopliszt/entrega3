@@ -1,0 +1,15 @@
+{% extends "cursos/base.html" %} {% block content_title %}
+<h1 class="text-2xl font-bold">Crear Plan</h1>
+{% endblock content_title %} {% block content %}
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+  <form method="post" class="space-y-4">
+    {% csrf_token %} {{ form.as_p }}
+    <button
+      type="submit"
+      class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+{% endblock content %}
