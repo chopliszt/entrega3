@@ -1,7 +1,7 @@
-from django.shortcuts import redirect, render  # get_object_or_404
+from django.shortcuts import redirect, render,get_object_or_404
 
 from .forms import CursoForm, EstudianteForm, PlanForm, PreferenciaForm
-from .models import Estudiante
+from .models import Estudiante, Curso
 
 # Create your views here.
 
@@ -14,6 +14,15 @@ def index(request):
 def lista_estudiantes(request):
     estudiantes = Estudiante.objects.all()
     return render(request, "", {"estudiantes": estudiantes})
+
+def lista_cursos_view(request):
+    cursos=Curso.objects.all()
+    query=request.GET.get("query","")
+    if len(query)>0:
+        resultado=cursos.filter(nombre__icontains=query).order_by("-nombre")      
+    else:
+        resultado=cursos.order_by("-nombre")
+    return render(request,"cursos/lista_cursos.html", {"cursos":resultado, "query":query}) #aqui pongo el template que creo para mostrar los resultados. La última parte es el contexto
 
 
 def crear_estudiante(request):
@@ -57,7 +66,7 @@ def crear_curso(request):
         form = CursoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/")  # Mas adelante le agrego a donde deberian reenviarse
+            return redirect("lista_cursos")  # Mas adelante le agrego a donde deberian reenviarse
     else:
         form = CursoForm()
 

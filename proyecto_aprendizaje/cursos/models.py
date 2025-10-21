@@ -11,6 +11,9 @@ class Curso(models.Model):
     nombre = models.CharField(max_length=150, null=False, blank=True, unique=True)
     fecha_creado = models.DateTimeField(default=timezone.now)
     esta_activo = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nombre
     # Tags, agregar en el futuro
 
 
